@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+    <title>Parasuram K — Linux Systems · Frontend Engineering · TUI</title>
+    <meta
+      name="description"
+      content="Parasuram K — Computer Science undergraduate at Panimalar Engineering College. Builds Linux desktops, React applications, and QML shells. 20+ hackathons, 80+ LeetCode problems."
+    />
+    <meta name="author" content="Parasuram K" />
+    <meta name="theme-color" content="#0A0C0F" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#F4F3EE" media="(prefers-color-scheme: light)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Parasuram K — Linux Systems · Frontend Engineering · TUI" />
+    <meta
+      property="og:description"
+      content="Computer Science undergraduate building Linux desktops, React applications and QML shells."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="canonical" href="https://parasuramk227.github.io/" />
+
+    <script>
+      // Resolve the theme before first paint so the page never flashes the wrong palette.
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('pk-theme')
+          var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches
+          var theme = stored === 'light' || stored === 'dark' ? stored : prefersLight ? 'light' : 'dark'
+          document.documentElement.setAttribute('data-theme', theme)
+          document.documentElement.style.colorScheme = theme
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'dark')
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="padding: 2rem; font-family: ui-monospace, monospace">
+        <h1>Parasuram K</h1>
+        <p>
+          This portfolio uses WebGL and JavaScript for its interactive hero. The full
+          content is available without them — please email
+          <a href="mailto:parasuramk227@gmail.com">parasuramk227@gmail.com</a>.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
