@@ -2,127 +2,171 @@
 
 /* ---------------------------------------------------------------------------
    Global base
+
+   Wrapped in a cascade layer so that Tailwind utilities always win over
+   these element defaults. Without the layer, `a { color: inherit }`
+   outranks `.text-accent-fg` and every link loses its colour.
 --------------------------------------------------------------------------- */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer base {
 
-html {
-  -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
-}
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  background-color: var(--c-canvas);
-  color: var(--c-ink);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.6;
-  font-synthesis-weight: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  overflow-x: clip;
-}
-
-h1,
-h2,
-h3,
-h4 {
-  margin: 0;
-  font-weight: 600;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
-}
-
-p {
-  margin: 0;
-  text-wrap: pretty;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-ul,
-ol {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-img,
-svg,
-canvas {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-}
-
-code,
-kbd,
-pre {
-  font-family: var(--font-mono);
-  font-size: 0.875em;
-}
-
-/* ---------------------------------------------------------------------------
-   Focus — one visible, high-contrast ring everywhere.
---------------------------------------------------------------------------- */
-
-:focus-visible {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
-}
-
-::selection {
-  background-color: color-mix(in oklab, var(--c-accent) 32%, transparent);
-  color: var(--c-ink);
-}
-
-/* ---------------------------------------------------------------------------
-   Scrollbars
---------------------------------------------------------------------------- */
-
-@supports (scrollbar-width: thin) {
   html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--c-line-strong) transparent;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--c-canvas);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  img,
+  svg,
+  canvas {
+    display: block;
+    max-width: 100%;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  code,
+  kbd,
+  pre {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Focus — one visible, high-contrast ring everywhere.
+  --------------------------------------------------------------------------- */
+
+  :focus-visible {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--c-accent) 32%, transparent);
+    color: var(--c-ink);
+  }
+
+  /* ---------------------------------------------------------------------------
+     Scrollbars
+  --------------------------------------------------------------------------- */
+
+  @supports (scrollbar-width: thin) {
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: var(--c-line-strong) transparent;
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--c-line-strong);
+    border: 3px solid var(--c-canvas);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--c-accent-dim);
   }
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+/* ---------------------------------------------------------------------------
+   Header palette
+--------------------------------------------------------------------------- */
+
+/*
+ * The header floats over the hero until the page scrolls. The hero is always
+ * the dark console, so while the header sits on top of it the header borrows
+ * the hero colour scale instead of the theme's — otherwise the light theme
+ * would put dark text on a black panel.
+ */
+.header-shell {
+  --h-ink: var(--c-ink);
+  --h-muted: var(--c-ink-muted);
+  --h-accent: var(--c-accent);
+  --h-line: var(--c-line);
 }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+.header-shell[data-over-hero='true'] {
+  --h-ink: var(--c-hero-ink);
+  --h-muted: var(--c-hero-muted);
+  --h-accent: var(--c-hero-accent);
+  --h-line: var(--c-hero-line);
 }
 
-::-webkit-scrollbar-thumb {
-  background-color: var(--c-line-strong);
-  border: 3px solid var(--c-canvas);
-  border-radius: 999px;
-}
+/* ---------------------------------------------------------------------------
+   Hero console
+--------------------------------------------------------------------------- */
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--c-accent-dim);
+/*
+ * Sentinel class. `on-hero` is never styled — it is detected by the button
+ * components to swap in the hero-safe variant. It stays in the cascade purely
+ * so the intent is visible in devtools.
+ */
+.on-hero {
+  --on-hero: 1;
 }
 
 /* ---------------------------------------------------------------------------
@@ -204,6 +248,129 @@ pre {
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   Article body — typography for the markdown transmissions.
+--------------------------------------------------------------------------- */
+
+.prose {
+  color: var(--c-ink-muted);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  max-width: 42rem;
+}
+
+.prose > * + * {
+  margin-top: 1.15em;
+}
+
+.prose h2 {
+  margin-top: 2.25em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--c-ink);
+}
+
+.prose h3 {
+  margin-top: 1.9em;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--c-ink);
+}
+
+.prose p {
+  margin-top: 1.15em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25rem;
+  list-style: revert;
+}
+
+.prose li + li {
+  margin-top: 0.45em;
+}
+
+.prose li::marker {
+  color: var(--c-accent);
+}
+
+.prose a {
+  color: var(--c-accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: var(--c-ink);
+}
+
+.prose strong {
+  color: var(--c-ink);
+  font-weight: 600;
+}
+
+.prose code {
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-sm);
+  background-color: var(--c-surface);
+  padding: 0.1em 0.35em;
+  font-size: 0.8125rem;
+  color: var(--c-accent);
+}
+
+.prose pre {
+  overflow-x: auto;
+  border: 1px solid var(--c-line);
+  border-radius: var(--radius-sm);
+  background-color: var(--c-surface);
+  padding: 1rem 1.15rem;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+}
+
+.prose pre code {
+  border: 0;
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: var(--c-ink-muted);
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--c-accent);
+  padding-left: 1rem;
+  color: var(--c-ink-faint);
+  font-style: italic;
+}
+
+.prose hr {
+  margin-block: 2.5em;
+  border: 0;
+  border-top: 1px solid var(--c-line);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.prose th,
+.prose td {
+  border-bottom: 1px solid var(--c-line);
+  padding: 0.5rem 0.6rem;
+  text-align: left;
+}
+
+.prose th {
+  color: var(--c-ink);
+  font-weight: 600;
 }
 
 /* ---------------------------------------------------------------------------

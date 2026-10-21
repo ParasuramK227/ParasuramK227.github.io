@@ -55,15 +55,15 @@ export function Hero() {
 
       <div className="pointer-events-none absolute inset-x-0 top-16 hidden border-b border-[var(--c-hero-line)] md:block">
         <div className="shell flex h-8 items-center justify-between">
-          <span className="hud text-[#5C6873]">~/parasuram-k — signal-core — 80×24</span>
-          <span className="hud text-[#5C6873]">{hero.statusLine}</span>
+          <span className="hud text-[var(--c-hero-dim)]">~/parasuram-k — signal-core — 80×24</span>
+          <span className="hud text-[var(--c-hero-dim)]">{hero.statusLine}</span>
         </div>
       </div>
 
       <div className="shell relative flex flex-1 flex-col justify-end pt-28 pb-10 md:justify-center md:pt-24 md:pb-24">
         <div className="max-w-2xl">
-          <p className="hud flex items-center gap-2 text-[#7F8B96]">
-            <span aria-hidden="true" className="inline-block size-1.5 rounded-full bg-accent" />
+          <p className="hud flex items-center gap-2 text-[var(--c-hero-faint)]">
+            <span aria-hidden="true" className="inline-block size-1.5 rounded-full bg-[var(--c-hero-accent)]" />
             {hero.eyebrow}
           </p>
 
@@ -74,27 +74,29 @@ export function Hero() {
             {hero.headline.map((line, index) => (
               <span key={line} className="block">
                 {index === hero.headline.length - 1 ? (
-                  <span className="text-accent">{line}</span>
+                  <span className="text-[var(--c-hero-accent)]">{line}</span>
                 ) : (
                   line
                 )}
+                {/* Keep the words separated for assistive tech and text selection. */}
+                {' '}
               </span>
             ))}
           </h1>
 
-          <p className="mt-6 max-w-xl text-[0.9375rem] leading-relaxed text-[#9AA5B0] md:text-base">
+          <p className="mt-6 max-w-xl text-[0.9375rem] leading-relaxed text-[var(--c-hero-muted)] md:text-base">
             {hero.lede}
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <ButtonLink href="#projects" size="lg">
+            <ButtonLink href="#projects" size="lg" className="on-hero">
               View projects
             </ButtonLink>
-            <ButtonLink href={site.resumePath} variant="secondary" size="lg">
+            <ButtonLink href={site.resumePath} variant="secondary" size="lg" className="on-hero">
               Résumé
             </ButtonLink>
-            <Button variant="ghost" size="lg" onClick={openPalette}>
-              <span aria-hidden="true" className="text-[#7F8B96]">
+            <Button variant="ghost" size="lg" onClick={openPalette} className="on-hero">
+              <span aria-hidden="true" className="text-[var(--c-hero-dim)]">
                 ⌘
               </span>
               Terminal
@@ -104,12 +106,12 @@ export function Hero() {
           <dl className="mt-12 grid max-w-lg grid-cols-2 gap-x-6 gap-y-5 border-t border-[var(--c-hero-line)] pt-8 sm:grid-cols-4">
             {stats.map((stat) => (
               <div key={stat.label}>
-                <dt className="hud text-[#6C7783]">{stat.label}</dt>
+                <dt className="hud text-[var(--c-hero-dim)]">{stat.label}</dt>
                 <dd className="mt-1.5">
                   <span className="font-mono text-2xl font-medium tabular-nums text-[var(--c-hero-ink)]">
                     {stat.value}
                   </span>
-                  <span className="mt-0.5 block font-mono text-[11px] text-[#6C7783]">
+                  <span className="mt-0.5 block font-mono text-[11px] text-[var(--c-hero-dim)]">
                     {stat.note}
                   </span>
                 </dd>
@@ -121,8 +123,8 @@ export function Hero() {
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 hidden border-t border-[var(--c-hero-line)] md:block">
         <div className="shell flex h-9 items-center justify-between">
-          <span className="hud text-[#5C6873]">{hero.locationLine}</span>
-          <span className="hud text-[#5C6873]">drag to rotate · scroll to enter</span>
+          <span className="hud text-[var(--c-hero-dim)]">{hero.locationLine}</span>
+          <span className="hud text-[var(--c-hero-dim)]">drag to rotate · scroll to enter</span>
         </div>
       </div>
     </section>

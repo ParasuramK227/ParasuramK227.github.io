@@ -31,10 +31,13 @@ export function Footer() {
       <div className="shell py-12 md:py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <p className="flex items-center gap-2 font-mono text-sm text-ink">
+            <a
+              href="#top"
+              className="inline-flex min-h-6 items-center gap-2 font-mono text-sm text-ink transition-colors hover:text-accent"
+            >
               <span aria-hidden="true" className="size-1.5 rounded-full bg-accent" />
               ~/parasuram-k
-            </p>
+            </a>
             <p className="mt-3 text-sm leading-relaxed text-muted">
               Linux systems, frontend engineering and terminal tooling — built by Parasuram K,
               Computer Science undergraduate at Panimalar Engineering College.
@@ -51,7 +54,7 @@ export function Footer() {
                     {...(link.href.startsWith('http')
                       ? { target: '_blank', rel: 'noreferrer noopener' }
                       : {})}
-                    className="font-mono text-sm text-muted transition-colors duration-150 hover:text-accent"
+                    className="inline-flex min-h-6 items-center font-mono text-sm text-muted transition-colors duration-150 hover:text-accent"
                   >
                     {link.label}
                     <span className="sr-only"> — {link.handle}</span>

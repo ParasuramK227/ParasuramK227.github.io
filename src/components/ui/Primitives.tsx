@@ -96,7 +96,7 @@ export function WindowChrome({
           <span className="size-1.5 rounded-full bg-[#3A424C]" />
           <span className="size-1.5 rounded-full bg-[#3A424C]" />
         </span>
-        <span className="hud truncate text-[#7C8894]">{title}</span>
+        <span className="hud truncate text-[var(--c-hero-faint)]">{title}</span>
         <span className="ml-auto shrink-0">{actions}</span>
       </div>
       <div className={cn('relative flex-1', bodyClassName)}>{children}</div>

@@ -32,10 +32,14 @@ export function Header() {
     return () => query.removeEventListener('change', onChange)
   }, [])
 
+  // While the header is transparent it floats over the always-dark hero.
+  const overHero = !scrolled && !menuOpen
+
   return (
     <header
+      data-over-hero={overHero ? 'true' : 'false'}
       className={cn(
-        'fixed inset-x-0 top-0 z-40 transition-colors duration-200',
+        'header-shell fixed inset-x-0 top-0 z-40 transition-colors duration-200',
         scrolled || menuOpen
           ? 'border-b border-line bg-canvas/85 backdrop-blur-md'
           : 'border-b border-transparent bg-transparent',
@@ -45,14 +49,14 @@ export function Header() {
         <div className="flex h-16 items-center justify-between gap-4">
           <a
             href="#top"
-            className="group flex items-center gap-2 font-mono text-sm text-ink"
+            className="group inline-flex min-h-6 items-center gap-2 py-2 font-mono text-sm text-[var(--h-ink)]"
             aria-label="Parasuram K — back to top"
           >
             <span
               aria-hidden="true"
-              className="size-1.5 rounded-full bg-accent transition-opacity duration-500 group-hover:opacity-60"
+              className="size-1.5 rounded-full bg-[var(--h-accent)] transition-opacity duration-500 group-hover:opacity-60"
             />
-            <span className="text-muted transition-colors group-hover:text-ink">
+            <span className="text-[var(--h-muted)] transition-colors group-hover:text-[var(--h-ink)]">
               ~/
             </span>
             <span className="font-medium tracking-tight">parasuram-k</span>
@@ -69,7 +73,9 @@ export function Header() {
                       aria-current={isActive ? 'true' : undefined}
                       className={cn(
                         'flex items-center gap-1.5 rounded-sm px-2 py-1.5 font-mono text-[13px] transition-colors duration-150',
-                        isActive ? 'text-accent' : 'text-muted hover:text-ink',
+                        isActive
+                          ? 'text-[var(--h-accent)]'
+                          : 'text-[var(--h-muted)] hover:text-[var(--h-ink)]',
                       )}
                     >
                       <span className="text-[10px] tabular-nums opacity-60">{item.index}</span>
@@ -85,7 +91,7 @@ export function Header() {
             <button
               type="button"
               onClick={openPalette}
-              className="hidden h-10 items-center gap-2 rounded-sm border border-line px-2.5 font-mono text-[13px] text-muted transition-colors duration-150 hover:border-accent hover:text-accent lg:inline-flex"
+              className="hidden h-10 items-center gap-2 rounded-sm border border-[var(--h-line)] px-2.5 font-mono text-[13px] text-[var(--h-muted)] transition-colors duration-150 hover:border-[var(--h-accent)] hover:text-[var(--h-accent)] lg:inline-flex"
             >
               <span aria-hidden="true">⌘</span>
               <span>K</span>
@@ -93,7 +99,12 @@ export function Header() {
 
             <ThemeToggle />
 
-            <ButtonLink href={site.resumePath} variant="secondary" size="sm" className="hidden sm:inline-flex">
+            <ButtonLink
+              href={site.resumePath}
+              variant="secondary"
+              size="sm"
+              className={cn('hidden sm:inline-flex', overHero && 'on-hero')}
+            >
               Résumé
             </ButtonLink>
 
@@ -103,7 +114,7 @@ export function Header() {
               aria-expanded={menuOpen}
               aria-controls="mobile-nav"
               aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              className="inline-flex size-10 items-center justify-center rounded-sm border border-line text-muted transition-colors duration-150 hover:border-accent hover:text-accent md:hidden"
+              className="inline-flex size-10 items-center justify-center rounded-sm border border-[var(--h-line)] text-[var(--h-muted)] transition-colors duration-150 hover:border-[var(--h-accent)] hover:text-[var(--h-accent)] md:hidden"
             >
               <svg viewBox="0 0 24 24" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
                 {menuOpen ? (
@@ -117,11 +128,7 @@ export function Header() {
         </div>
       </div>
 
-      <div
-        id="mobile-nav"
-        hidden={!menuOpen}
-        className="border-t border-line bg-canvas md:hidden"
-      >
+      <div id="mobile-nav" hidden={!menuOpen} className="border-t border-line bg-canvas md:hidden">
         <nav aria-label="Primary mobile" className="shell py-4">
           <ul className="flex flex-col">
             {navItems.map((item) => (

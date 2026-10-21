@@ -39,6 +39,13 @@
   /* The hero is a fixed console viewport in both themes by design. */
   --c-hero-bg: #08090C;
   --c-hero-ink: oklch(0.945 0.006 220);
+  /* Hero muted steps are tuned to clear 4.5:1 on --c-hero-bg. */
+  --c-hero-muted: #8A95A1; /* 6.4:1 */
+  --c-hero-faint: #7A858F; /* 5.2:1 */
+  --c-hero-dim: #7E8994; /* 5.2:1 on --c-hero-bg */
+  --c-hero-accent: oklch(0.83 0.125 176);
+  --c-hero-accent-fg: oklch(0.17 0.02 176);
+  --c-hero-signal: oklch(0.82 0.135 78);
   --c-hero-line: oklch(0.3 0.014 248);
 }
 
@@ -65,8 +72,15 @@
   --c-ok: oklch(0.48 0.11 152);
   --c-danger: oklch(0.52 0.18 25);
 
+  /* The hero stays a dark console in the light theme too. */
   --c-hero-bg: #08090C;
   --c-hero-ink: oklch(0.945 0.006 220);
+  --c-hero-muted: #8A95A1;
+  --c-hero-faint: #7A858F;
+  --c-hero-dim: #7E8994;
+  --c-hero-accent: oklch(0.83 0.125 176);
+  --c-hero-accent-fg: oklch(0.17 0.02 176);
+  --c-hero-signal: oklch(0.82 0.135 78);
   --c-hero-line: oklch(0.3 0.014 248);
 }
 

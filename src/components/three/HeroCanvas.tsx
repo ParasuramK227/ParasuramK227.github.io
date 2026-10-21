@@ -11,7 +11,7 @@ import { useMediaQuery } from '@/lib/hooks'
 function WebGLFallback() {
   return (
     <div className="flex h-full w-full items-center justify-center bg-[var(--c-hero-bg)]">
-      <p className="hud px-6 text-center text-[#6C7783]">
+      <p className="hud px-6 text-center text-[var(--c-hero-dim)]">
         interactive viewport unavailable — webgl not supported
       </p>
     </div>
