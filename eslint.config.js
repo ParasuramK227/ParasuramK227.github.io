@@ -19,8 +19,21 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true, allowExportNames: ['useTheme', 'usePalette'] },
+      ],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    },
+  },
+  {
+    // The React Three Fiber layer mutates Three.js objects inside `useFrame`.
+    // Those objects live outside React entirely, so the compiler's purity and
+    // immutability rules do not apply to them.
+    files: ['src/components/three/**/*.{ts,tsx}'],
+    rules: {
+      'react-hooks/purity': 'off',
+      'react-hooks/immutability': 'off',
     },
   },
 )
