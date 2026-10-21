@@ -1,0 +1,87 @@
+{
+  "generatedAt": "2026-10-21T17:01:40.147Z",
+  "username": "ParasuramK227",
+  "name": "Parasuram K",
+  "followers": 9,
+  "publicRepos": 39,
+  "totalBytes": 5769773,
+  "languages": [
+    {
+      "language": "TypeScript",
+      "bytes": 2290465,
+      "percent": 39.7
+    },
+    {
+      "language": "HTML",
+      "bytes": 1961428,
+      "percent": 34
+    },
+    {
+      "language": "Python",
+      "bytes": 688939,
+      "percent": 11.9
+    },
+    {
+      "language": "CSS",
+      "bytes": 315120,
+      "percent": 5.5
+    },
+    {
+      "language": "JavaScript",
+      "bytes": 312757,
+      "percent": 5.4
+    },
+    {
+      "language": "QML",
+      "bytes": 155932,
+      "percent": 2.7
+    },
+    {
+      "language": "PLpgSQL",
+      "bytes": 16451,
+      "percent": 0.3
+    }
+  ],
+  "topRepos": [
+    {
+      "name": "Quickshell_Shell_v2",
+      "description": "The decond full fledged linux hyprland shell is being built by me personally for personal uses only and will not be distributed",
+      "language": "QML",
+      "stars": 0,
+      "pushedAt": "2026-07-28T04:26:32Z",
+      "url": "https://github.com/ParasuramK227/Quickshell_Shell_v2"
+    },
+    {
+      "name": "Recirculate",
+      "description": "Food and waste management and circulation platform",
+      "language": null,
+      "stars": 0,
+      "pushedAt": "2026-07-17T12:38:41Z",
+      "url": "https://github.com/ParasuramK227/Recirculate"
+    },
+    {
+      "name": "Codite",
+      "description": "This repository contains the project files of the team Codite for the event Sathakathon'26",
+      "language": "TypeScript",
+      "stars": 0,
+      "pushedAt": "2026-04-11T07:37:34Z",
+      "url": "https://github.com/ParasuramK227/Codite"
+    },
+    {
+      "name": "MyRepository",
+      "description": "Hello everyone my name is Parasuram K , I'm studying in Panimalar Engineering College.This repository has been created to store three text files namely [file1.txt , file2.txt and file3.txt] respectively .",
+      "language": null,
+      "stars": 0,
+      "pushedAt": "2025-05-26T04:39:32Z",
+      "url": "https://github.com/ParasuramK227/MyRepository"
+    },
+    {
+      "name": "Portfolio",
+      "description": "A portfolio website for Parasuram.K",
+      "language": "JavaScript",
+      "stars": 0,
+      "pushedAt": "2025-02-18T14:16:49Z",
+      "url": "https://github.com/ParasuramK227/Portfolio"
+    }
+  ]
+}

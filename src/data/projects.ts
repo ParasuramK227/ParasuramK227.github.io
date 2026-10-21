@@ -10,6 +10,9 @@ export type ProjectStatus = 'online' | 'active' | 'wip'
 
 export type ProjectScale = 'feature' | 'standard' | 'compact'
 
+/** Grid span on large screens — the layout is priority-driven, not uniform. */
+export type ProjectSpan = 2 | 3
+
 export type AccentKey = 'accent' | 'signal' | 'info' | 'ok'
 
 export interface Project {
@@ -27,6 +30,7 @@ export interface Project {
   repo?: string
   live?: string
   scale: ProjectScale
+  span: ProjectSpan
   accent: AccentKey
   /** Optional proof points — all measured or verifiable. */
   facts?: { label: string; value: string }[]
@@ -47,6 +51,7 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/ParasuramK227/Medigraph',
     scale: 'feature',
+    span: 3,
     accent: 'signal',
     facts: [
       { label: 'award', value: '1st runner-up, PEC CTS Techathon 4.0' },
@@ -68,6 +73,7 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/ParasuramK227/Luka---Chess-Engine',
     scale: 'feature',
+    span: 3,
     accent: 'info',
     facts: [
       { label: 'engine', value: 'Stockfish 19 via UCI, depth 18 default' },
@@ -89,6 +95,7 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/ParasuramK227/Quickshell_Shell_v2',
     scale: 'standard',
+    span: 2,
     accent: 'accent',
     facts: [
       { label: 'iterations', value: 'second full rewrite after v1' },
@@ -109,6 +116,7 @@ export const projects: Project[] = [
     year: '2025',
     repo: 'https://github.com/ParasuramK227/MindCareAid',
     scale: 'standard',
+    span: 2,
     accent: 'ok',
   },
   {
@@ -124,6 +132,7 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/ParasuramK227/HyprlandDotFiles',
     scale: 'compact',
+    span: 2,
     accent: 'accent',
   },
   {
@@ -139,6 +148,7 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/ParasuramK227/Pokedox',
     scale: 'compact',
+    span: 3,
     accent: 'signal',
   },
   {
@@ -154,6 +164,7 @@ export const projects: Project[] = [
     year: '2026',
     repo: 'https://github.com/ParasuramK227/Recirculate',
     scale: 'compact',
+    span: 3,
     accent: 'ok',
   },
 ]
